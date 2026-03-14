@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import API from "../services/api";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
 const InquiryCart = () => {
 
@@ -40,32 +42,41 @@ const InquiryCart = () => {
 
   const sendInquiry = async () => {
 
-    try {
+  try {
 
-      for (let product of cart) {
+    for (let product of cart) {
 
-        await API.post("/inquiry", {
-          customer_name: form.customer_name,
-          email: form.email,
-          machine_id: product.id,
-          machine_name: product.name,   
-          message: form.message
-        });
-
-      }
-
-      toast.success("Inquiry sent successfully");
-
-      localStorage.removeItem("inquiryCart");
-      setCart([]);
-
-    } catch (err) {
-
-      toast.error("Failed to send inquiry");
+      await API.post("/inquiry", {
+        customer_name: form.customer_name,
+        email: form.email,
+        machine_id: product.id,
+        machine_name: product.name,
+        message: form.message
+      });
 
     }
 
-  };
+    toast.success("Inquiry sent successfully");
+
+    // Clear cart everywhere
+    localStorage.removeItem("inquiryCart");
+
+    setCart([]);
+
+    // Reset form
+    setForm({
+      customer_name: "",
+      email: "",
+      message: ""
+    });
+
+  } catch (err) {
+
+    toast.error("Failed to send inquiry");
+
+  }
+
+};
 
   return (
 
@@ -76,8 +87,27 @@ const InquiryCart = () => {
       </h1>
 
       {cart.length === 0 && (
-        <p className="text-gray-500">No products in inquiry cart</p>
-      )}
+
+  <div className="flex flex-col items-center justify-center text-center mt-20">
+    <FaShoppingCart size={60} className="text-gray-400 mb-4" />
+
+    <h2 className="text-2xl font-semibold mb-3">
+      Your Inquiry Cart is Empty
+    </h2>
+
+    <p className="text-gray-500 mb-6">
+      Add products you want to send enquiry for.
+    </p>
+
+    <Link to="/products">
+      <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded transition active:scale-95">
+        View All Products
+      </button>
+    </Link>
+
+  </div>
+
+)}
 
       {cart.map(product => (
 

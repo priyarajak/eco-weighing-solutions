@@ -1,18 +1,47 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import API from "../services/api";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";import API from "../services/api";
 import heroImage from "../assets/images/weighbridge-truck.png";
 import ProductCard from "../components/ProductCard";
 
 const Home = () => {
 
   const [products, setProducts] = useState([]);
+const [cart, setCart] = useState([]);
+
+useEffect(() => {
+
+  const storedCart = localStorage.getItem("inquiryCart");
+
+  if (storedCart) {
+    setCart(JSON.parse(storedCart));
+  }
+
+}, []);
 
   useEffect(() => {
     API.get("/products")
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
   }, []);
+
+
+  const addToCart = (product) => {
+
+  const exists = cart.some(item => item.id === product.id);
+
+  if (exists) return;
+
+  const updatedCart = [...cart, product];
+
+  setCart(updatedCart);
+
+  localStorage.setItem("inquiryCart", JSON.stringify(updatedCart));
+
+  toast.success("Added to Inquiry Cart");
+
+};
+
 
   return (
 
@@ -116,11 +145,11 @@ const Home = () => {
 
           {products.slice(0,3).map(product => (
             <ProductCard
-              key={product.id}
-              product={product}
-              addToCart={() => {}}
-              cart={[]}
-            />
+  key={product.id}
+  product={product}
+  addToCart={addToCart}
+  cart={cart}
+/>
           ))}
 
         </div>
