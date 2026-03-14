@@ -11,6 +11,10 @@ const [cart, setCart] = useState([]);
 
 const addToCart = (product) => {
 
+  const exists = cart.some(item => item.id === product.id);
+
+  if (exists) return;
+
   const updatedCart = [...cart, product];
 
   setCart(updatedCart);
@@ -19,6 +23,13 @@ const addToCart = (product) => {
 
   toast.success("Added to Inquiry Cart");
 };
+useEffect(() => {
+  const storedCart = localStorage.getItem("inquiryCart");
+
+  if (storedCart) {
+    setCart(JSON.parse(storedCart));
+  }
+}, []);
 
   useEffect(() => {
     API.get("/products")
