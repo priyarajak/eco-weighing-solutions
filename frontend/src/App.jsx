@@ -9,6 +9,7 @@ import MobileNav from "./components/MobileNav";
 import Login from "./pages/Login";
 import InquiryCart from "./pages/InquiryCart";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -28,7 +29,14 @@ function App() {
             <Route path="/inquiry-cart" element={<InquiryCart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route
+  path="/admin"
+  element={
+    <ProtectedRoute>
+      <Admin />
+    </ProtectedRoute>
+  }
+/>
           </Routes>
 
         </main>

@@ -18,6 +18,10 @@ useEffect(() => {
   }
 
 }, []);
+const logout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/login";
+};
 
   const [newProduct, setNewProduct] = useState({
     name: "",
@@ -102,6 +106,12 @@ useEffect(() => {
       <h1 className="text-3xl font-bold mb-6">
         Admin Dashboard
       </h1>
+      <button
+  onClick={logout}
+  className="bg-red-500 text-white px-4 py-2 rounded mb-6"
+>
+  Logout
+</button>
 
       {/* Add Machine */}
 
