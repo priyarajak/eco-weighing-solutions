@@ -10,9 +10,9 @@ app = FastAPI(
     version="1.0"
 )
 
-# CORS CONFIGURATION
 origins = [
     "http://localhost:5173",
+    "http://localhost:5174",
     "https://eco-weighing-solutions.vercel.app"
 ]
 
