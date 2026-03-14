@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, addToCart, cart }) => {
 
-  const isInCart = cart.some(p => p.id === product.id);
+  const isInCart = cart?.some(p => p.id === product.id);
 
   return (
     <div className="border rounded-lg shadow p-4 hover:shadow-lg transition">
@@ -29,7 +29,10 @@ const ProductCard = ({ product, addToCart, cart }) => {
         </Link>
 
         <button
-  onClick={() => addToCart(product)}
+  oonClick={() => {
+  console.log("clicked");
+  addToCart(product);
+}}
   disabled={isInCart}
   className={`px-4 py-2 rounded text-white font-medium transition
     ${
