@@ -22,28 +22,29 @@ const ProductCard = ({ product, addToCart, cart }) => {
 
       <div className="flex gap-3 mt-4">
 
-        <Link to={`/products/${product.id}`}>
-          <button className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition active:scale-95">
-  Read More
-</button>
+        <Link
+          to={`/products/${product.id}`}
+          className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition active:scale-95"
+        >
+          Read More
         </Link>
 
         <button
-  oonClick={() => {
-  console.log("clicked");
-  addToCart(product);
-}}
-  disabled={isInCart}
-  className={`px-4 py-2 rounded text-white font-medium transition
-    ${
-      isInCart
-        ? "bg-green-800 cursor-not-allowed"
-        : "bg-green-600 hover:bg-green-700 active:scale-95"
-    }
-  `}
->
-  {isInCart ? "Added" : "Add Inquiry"}
-</button>
+          onClick={() => {
+            console.log("clicked");
+            addToCart(product);
+          }}
+          disabled={isInCart}
+          className={`px-4 py-2 rounded text-white font-medium transition
+            ${
+              isInCart
+                ? "bg-green-800 cursor-not-allowed"
+                : "bg-green-600 hover:bg-green-700 active:scale-95"
+            }
+          `}
+        >
+          {isInCart ? "Added" : "Add Inquiry"}
+        </button>
 
       </div>
 
