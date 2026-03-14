@@ -28,6 +28,7 @@ function App() {
             <Route path="/inquiry-cart" element={<InquiryCart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
 
         </main>
