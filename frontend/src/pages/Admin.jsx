@@ -55,7 +55,7 @@ const logout = () => {
   };
 
   const fetchInquiries = async () => {
-    const res = await API.get("/inquiries");
+    const res = await API.get("/inquiry/inquiries");
     setInquiries(res.data);
   };
 
