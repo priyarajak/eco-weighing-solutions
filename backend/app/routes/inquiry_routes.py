@@ -23,7 +23,7 @@ async def get_inquiries():
 
     inquiries = []
 
-    async for inquiry in inquiry_collection.find():
+    async for inquiry in inquiry_collection.find().sort("_id", -1):
         inquiries.append(inquiry_helper(inquiry))
 
     return inquiries
