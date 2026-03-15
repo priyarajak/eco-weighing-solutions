@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";import API from "../services/api";
 import heroImage from "../assets/images/weighbridge-truck.png";
 import ProductCard from "../components/ProductCard";
+import PageWrapper from "../components/PageWrapper";
 
 const Home = () => {
 
@@ -44,7 +45,7 @@ useEffect(() => {
 
 
   return (
-
+    <PageWrapper>
     <div>
 
       {/* HERO SECTION */}
@@ -208,6 +209,7 @@ useEffect(() => {
       </section>
 
     </div>
+    </PageWrapper>
 
   );
 };

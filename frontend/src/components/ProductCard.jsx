@@ -5,8 +5,7 @@ const ProductCard = ({ product, addToCart, cart }) => {
   const isInCart = cart?.some(p => p.id === product.id);
 
   return (
-    <div className="border rounded-lg shadow p-4 hover:shadow-lg transition">
-
+   <div className="border rounded-lg shadow p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       <img
         src={product.image_url}
         alt={product.name}

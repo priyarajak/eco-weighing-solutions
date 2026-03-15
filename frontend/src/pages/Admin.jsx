@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import  API, { CLOUDINARY_URL, UPLOAD_PRESET } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import PageWrapper from "../components/PageWrapper";
 
 const Admin = () => {
 
@@ -101,6 +102,7 @@ const logout = () => {
   };
 
   return (
+    <PageWrapper>
     <div className="p-10">
 
       <h1 className="text-3xl font-bold mb-6">
@@ -218,6 +220,7 @@ const logout = () => {
       </table>
 
     </div>
+    </PageWrapper>
   );
 };
 

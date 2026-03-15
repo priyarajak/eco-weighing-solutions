@@ -1,6 +1,7 @@
 import { useState } from "react";
 import API from "../services/api";
 import { useNavigate } from "react-router-dom";
+import PageWrapper from "../components/PageWrapper";
 
 const Login = () => {
 
@@ -30,6 +31,8 @@ const Login = () => {
   };
 
   return (
+    <PageWrapper>
+
 
     <div className="p-20 max-w-md mx-auto">
 
@@ -61,6 +64,8 @@ const Login = () => {
       </form>
 
     </div>
+    </PageWrapper>
+
 
   );
 };

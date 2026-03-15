@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 import ProductCard from "../components/ProductCard";
 import { toast } from "react-toastify";
+import PageWrapper from "../components/PageWrapper";
 
 const Products = () => {
 
@@ -38,6 +39,7 @@ useEffect(() => {
   }, []);
 
   return (
+    <PageWrapper>
     <div className="p-10 pb-20">
 
       <h1 className="text-3xl font-bold mb-8">
@@ -58,6 +60,7 @@ useEffect(() => {
       </div>
 
     </div>
+    </PageWrapper>
   );
 };
 

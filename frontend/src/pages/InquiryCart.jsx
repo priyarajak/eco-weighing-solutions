@@ -3,6 +3,7 @@ import API from "../services/api";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import PageWrapper from "../components/PageWrapper";
 
 const InquiryCart = () => {
 
@@ -79,7 +80,7 @@ const InquiryCart = () => {
 };
 
   return (
-
+    <PageWrapper>
     <div className="p-10 max-w-3xl mx-auto">
 
       <h1 className="text-3xl font-bold mb-6">
@@ -180,6 +181,7 @@ const InquiryCart = () => {
       )}
 
     </div>
+    </PageWrapper>
 
   );
 

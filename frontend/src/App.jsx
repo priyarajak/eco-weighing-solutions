@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Inquiry from "./pages/Inquiry";
@@ -12,40 +12,38 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { AnimatePresence } from "framer-motion";
 function App() {
+  const location = useLocation();
   return (
     <div className="flex flex-col min-h-screen">
 
       <BrowserRouter>
 
-        <Navbar />
+  <Navbar />
 
-        <main className="flex-grow">
+  <main className="flex-grow">
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/inquiry-cart" element={<InquiryCart />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route
-  path="/admin"
-  element={
-    <ProtectedRoute>
-      <Admin />
-    </ProtectedRoute>
-  }
-/>
-          </Routes>
+    <AnimatePresence mode="wait">
 
-        </main>
-        <MobileNav />
-        <Footer />
+      <Routes location={location} key={location.pathname}>
 
-        <ToastContainer position="top-right" autoClose={2000} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/inquiry-cart" element={<InquiryCart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<Admin />} />
 
-      </BrowserRouter>
+      </Routes>
+
+    </AnimatePresence>
+
+  </main>
+
+  <MobileNav />
+  <Footer />
+
+</BrowserRouter>
 
     </div>
   );
