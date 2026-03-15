@@ -4,11 +4,12 @@ import API from "../services/api";
 const Inquiry = () => {
 
   const [form, setForm] = useState({
-    customer_name: "",
-    email: "",
-    machine_id: "",
-    message: ""
-  });
+  customer_name: "",
+  email: "",
+  machine_id: "",
+  machine_name: "",
+  message: ""
+});
 
   const handleChange = (e) => {
     setForm({
